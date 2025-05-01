@@ -76,10 +76,16 @@ Check out the [deployment documentation](https://nuxt.com/docs/getting-started/d
 
 # Prisma
 Generate prisma client
-```npx prisma generate```
+```
+npx prisma generate
+```
 
 Seeding
-```npx prisma migrate reset```
+```
+npx prisma migrate reset
+```
 
 Preview the database
-```npx prisma studio```
+```
+npx prisma studio
+```
