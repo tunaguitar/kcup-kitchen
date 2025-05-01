@@ -42,3 +42,8 @@ prisma/migrations
 prisma/dev.db*
 
 .vscode
+
+# Local env files
+.env
+.env.*
+!.env.example

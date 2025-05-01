@@ -37,3 +37,8 @@ npm run build
 ```sh
 npm run lint
 ```
+
+## Prisma
+
+`npm prisma init`
+`prisma migrate reset`
