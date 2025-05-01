@@ -9,6 +9,7 @@ export default defineNuxtConfig({
     "@nuxt/icon",
     "@nuxt/image",
     "@nuxt/ui",
+    "@prisma/nuxt",
   ],
 
   css: ["~/assets/main.css"],

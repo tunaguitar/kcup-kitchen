@@ -73,3 +73,13 @@ bun run preview
 ```
 
 Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+
+# Prisma
+Generate prisma client
+```npx prisma generate```
+
+Seeding
+```npx prisma migrate reset```
+
+Preview the database
+```npx prisma studio```

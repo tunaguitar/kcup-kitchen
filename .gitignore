@@ -18,6 +18,10 @@ logs
 .fleet
 .idea
 
+# Dev DB Migrations
+prisma/migrations
+prisma/dev.db*
+
 # Local env files
 .env
 .env.*
