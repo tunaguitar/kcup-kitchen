@@ -1,3 +1,3 @@
 <template>
-  <div>hola amigo</div>
+  <div class="text-7xl">hola amigo</div>
 </template>

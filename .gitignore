@@ -40,3 +40,5 @@ coverage
 # prisma
 prisma/migrations
 prisma/dev.db*
+
+.vscode
