@@ -1,2 +1,7 @@
 @import "tailwindcss";
 @import "@nuxt/ui";
+
+@theme {
+  --font-special: "Special Elite";
+  --font-chelsea: "Chelsea Market";
+}
