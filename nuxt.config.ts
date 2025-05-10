@@ -13,4 +13,16 @@ export default defineNuxtConfig({
   ],
 
   css: ["~/assets/main.css"],
+
+  app: {
+    head: {
+      link: [
+        {
+          rel: "icon",
+          type: "image/x-icon",
+          href: "/icon.png", // Path to your favicon
+        },
+      ],
+    },
+  },
 });
