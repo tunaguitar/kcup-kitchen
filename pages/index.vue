@@ -1,5 +1,5 @@
 <template>
-  <div class="flex justify-center w-screen pt-[80px]">
+  <div class="page-format">
     <h1 class="text-xl">This is the Index page</h1>
   </div>
 </template>

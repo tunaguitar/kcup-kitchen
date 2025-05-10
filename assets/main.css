@@ -5,3 +5,7 @@
   --font-special: "Special Elite";
   --font-chelsea: "Chelsea Market";
 }
+
+.page-format {
+  @apply pt-[80px] bg-gray-100 w-screen min-h-screen;
+}
