@@ -23,33 +23,39 @@ model User {
   orders Order[]
 }
 
+/// A full order from a user
 model Order {
     id    String @id @default(uuid())
 
+    // user that the order belongs to
     userId String
     user User? @relation(fields: [userId], references: [id])
 
     items OrderedItem[]
 
     @@unique([id, userId])
-
 }
 
+/// A single order of an item, including quantity and the order it's a part of
 model OrderedItem {
+
+  id String @id @default(uuid())
+
+  // order that the item belongs to
   orderId String
   order Order @relation(fields: [orderId], references: [id])
 
+  // item that belongs to the order
   itemId String
   item MenuItem @relation(fields: [itemId], references: [id])
 
+  // item options
+  options ItemOption[]
+
   quantity Int 
-
-  // chosenOptions ItemOptions[]
-
-  @@id([orderId, itemId])
 }
 
-
+/// An item on the menu that can be ordered
 /// missing image (optional)
 model MenuItem {
   id    String @id @default(uuid())
@@ -58,7 +64,7 @@ model MenuItem {
   price Float
   description String?
 
-  // options ItemOptions[]
+  options ItemOption[]
 
   minQuantity Int
   maxQuantity Int?
@@ -69,15 +75,20 @@ model MenuItem {
   type MenuType @relation(fields:[typeId], references: [id])
 }
 
-// model ItemOptions {
-//   itemId String
-//   item MenuItem
+/// The options for a menu item, ie extra rice, no beans, stuff like that
+model ItemOption {
+  id String @id @default(uuid())
 
-//   description String
+  // the item the options belongs to
+  itemId String
+  item MenuItem @relation(fields: [itemId], references: [id])
 
-//   order Order
-// }
+  description String
 
+  orders OrderedItem[]
+}
+
+/// The categories on the menu
 model MenuType {
   id String @id @default(uuid())
   
