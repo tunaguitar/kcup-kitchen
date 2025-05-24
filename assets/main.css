@@ -6,6 +6,43 @@
   --font-chelsea: "Chelsea Market";
 }
 
+body,
+html {
+  @apply scroll-smooth;
+}
+
 .page-format {
   @apply pt-[80px] bg-gray-100 w-screen min-h-screen;
+}
+
+.flash-slide {
+  border: none;
+  display: inline-block;
+  color: rgb(255, 255, 255);
+  margin: 20px;
+  width: 180px;
+  height: 50px;
+  position: relative;
+  overflow: hidden;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-family: Helvetica;
+  text-align: center;
+}
+.flash-slide::before {
+  content: "";
+  position: absolute;
+  top: -30px;
+  left: -80px;
+  height: 100px;
+  width: 70px;
+  background: rgba(255, 255, 255, 0.3);
+  transform: rotate(20deg);
+}
+.flash-slide:hover::before {
+  left: 190px;
+  transition: 0.5s;
+}
+.flash-slide--green {
+  background: rgb(119, 20, 20);
 }
