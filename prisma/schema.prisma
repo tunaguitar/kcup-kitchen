@@ -29,7 +29,7 @@ model Order {
 
     // user that the order belongs to
     userId String
-    user User? @relation(fields: [userId], references: [id])
+    user User @relation(fields: [userId], references: [id], onDelete: Restrict, onUpdate: Restrict)
 
     items OrderedItem[]
 
@@ -43,11 +43,11 @@ model OrderedItem {
 
   // order that the item belongs to
   orderId String
-  order Order @relation(fields: [orderId], references: [id])
+  order Order @relation(fields: [orderId], references: [id], onDelete: Cascade, onUpdate: Cascade)
 
   // item that belongs to the order
-  itemId String
-  item MenuItem @relation(fields: [itemId], references: [id])
+  itemId String?
+  item MenuItem? @relation(fields: [itemId], references: [id], onDelete: SetNull, onUpdate: Cascade)
 
   // item options
   options ItemOption[]
@@ -72,7 +72,7 @@ model MenuItem {
   orderedItems OrderedItem[]
 
   typeId String
-  type MenuType @relation(fields:[typeId], references: [id])
+  type MenuType @relation(fields:[typeId], references: [id], onDelete: Restrict, onUpdate: Cascade)
 }
 
 /// The options for a menu item, ie extra rice, no beans, stuff like that
@@ -81,7 +81,7 @@ model ItemOption {
 
   // the item the options belongs to
   itemId String
-  item MenuItem @relation(fields: [itemId], references: [id])
+  item MenuItem @relation(fields: [itemId], references: [id], onDelete: Cascade, onUpdate: Cascade)
 
   description String
 
