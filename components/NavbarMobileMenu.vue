@@ -1,7 +1,7 @@
 <template>
   <!-- Mobile Menu -->
   <div
-    class="fixed left-0 w-screen h-[calc(100vh-80px)] bg-red-800 shadow-xl transition-transform duration-500 ease-in-out z-40 overflow-y-auto"
+    class="fixed w-screen top-0 h-[calc(100vh-80px)] bg-red-800 shadow-xl transition-transform duration-500 ease-in-out z-40 overflow-y-auto"
     :class="{
       'translate-y-[80px]': menuIsOpen, // When open, slide in from top
       '-translate-y-full': !menuIsOpen, // When closed, slide out to top

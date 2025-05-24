@@ -12,12 +12,12 @@
     </NuxtLink>
 
     <!-- nav items -->
-    <div class="h-full flex items-center gap-5 md:gap-9">
+    <div class="h-full flex items-center gap-5 lg:gap-10 xl:gap-16">
       <NuxtLink
         v-for="item in navItems"
         :key="item.name"
         :to="item.path"
-        class="max-md:hidden text-3xl font-chelsea text-black transition-all hover:text-red-900"
+        class="max-md:hidden text-xl lg:text-3xl font-chelsea text-black transition-all hover:text-red-900"
       >
         {{ item.name.toUpperCase() }}
       </NuxtLink>
@@ -33,12 +33,12 @@
         aria-label="User Profile"
       />
       <button
-        class="md:hidden relative w-[42px] h-[42px] flex items-center justify-center text-black transition-colors duration-300 hover:text-red-900 cursor-pointer"
+        class="md:hidden relative w-[52px] h-[52px] flex items-center justify-center text-black transition-colors duration-300 hover:text-red-900 cursor-pointer"
         @click="toggleMenu"
       >
         <!-- Menu (Hamburger) Icon -->
         <Menu
-          :size="42"
+          :size="52"
           class="absolute transition-all duration-300 ease-in-out"
           :class="{
             'opacity-100 rotate-0 scale-100': !menuIsOpen,
@@ -47,7 +47,7 @@
         />
         <!-- X Icon -->
         <X
-          :size="42"
+          :size="52"
           class="absolute transition-all duration-300 ease-in-out"
           :class="{
             'opacity-100 rotate-0 scale-100': menuIsOpen,
