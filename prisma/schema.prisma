@@ -11,17 +11,89 @@ datasource db {
 }
 
 model User {
-  id    Int     @id @default(autoincrement())
+  id     String @id @default(uuid())
   email String  @unique
-  name  String?
-  posts Post[]
+
+  fName  String
+  lName String
+  phone String
+
+  isAdmin Boolean @default(false)
+
+  orders Order[]
 }
 
-model Post {
-  id        Int     @id @default(autoincrement())
-  title     String
-  content   String?
-  published Boolean @default(false)
-  author    User    @relation(fields: [authorId], references: [id])
-  authorId  Int
+/// A full order from a user
+model Order {
+    id    String @id @default(uuid())
+
+    // user that the order belongs to
+    userId String
+    user User @relation(fields: [userId], references: [id], onDelete: Restrict, onUpdate: Restrict)
+
+    items OrderedItem[]
+
+    @@unique([id, userId])
+}
+
+/// A single order of an item, including quantity and the order it's a part of
+model OrderedItem {
+
+  id String @id @default(uuid())
+
+  // order that the item belongs to
+  orderId String
+  order Order @relation(fields: [orderId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+
+  // item that belongs to the order
+  itemId String
+  item MenuItem @relation(fields: [itemId], references: [id], onDelete: Restrict, onUpdate: Cascade)
+
+  // item options
+  options ItemOption[]
+
+  quantity Int 
+}
+
+/// An item on the menu that can be ordered
+/// missing image (optional)
+model MenuItem {
+  id    String @id @default(uuid())
+
+  name  String
+  price Float
+  description String?
+  hidden Boolean @default(false)
+
+  options ItemOption[]
+
+  minQuantity Int
+  maxQuantity Int?
+
+  orderedItems OrderedItem[]
+
+  typeId String
+  type MenuType @relation(fields:[typeId], references: [id], onDelete: Restrict, onUpdate: Cascade)
+}
+
+/// The options for a menu item, ie extra rice, no beans, stuff like that
+model ItemOption {
+  id String @id @default(uuid())
+
+  // the item the options belongs to
+  itemId String
+  item MenuItem @relation(fields: [itemId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+
+  description String
+
+  orders OrderedItem[]
+}
+
+/// The categories on the menu
+model MenuType {
+  id String @id @default(uuid())
+  
+  name String @unique
+
+  item MenuItem[]
 }
