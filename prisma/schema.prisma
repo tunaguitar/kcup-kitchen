@@ -46,8 +46,8 @@ model OrderedItem {
   order Order @relation(fields: [orderId], references: [id], onDelete: Cascade, onUpdate: Cascade)
 
   // item that belongs to the order
-  itemId String?
-  item MenuItem? @relation(fields: [itemId], references: [id], onDelete: SetNull, onUpdate: Cascade)
+  itemId String
+  item MenuItem @relation(fields: [itemId], references: [id], onDelete: Restrict, onUpdate: Cascade)
 
   // item options
   options ItemOption[]
@@ -63,6 +63,7 @@ model MenuItem {
   name  String
   price Float
   description String?
+  hidden Boolean @default(false)
 
   options ItemOption[]
 
