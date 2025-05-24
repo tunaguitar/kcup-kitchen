@@ -1,8 +1,6 @@
 <template>
   <footer class="bg-black text-white py-12 px-4 sm:px-6 lg:px-8 w-full">
-    <div
-      className="w-full flex justify-center absolute -translate-y-[135%] left-0"
-    >
+    <div class="w-full flex justify-center absolute -translate-y-[135%] left-0">
       <ArrowUp
         class="text-white w-[50px] h-[50px] rounded-full bg-black cursor-pointer p-3 transition-all hover:-translate-y-0.5"
         :onclick="scrollUp"
@@ -23,7 +21,7 @@
           </p>
           <NuxtLink href="/order" class="m-5 relative">
             <button
-              className="btn flash-slide hover:scale-105 cursor-pointer transition-transform duration-500 flash-slide--green rounded-full"
+              class="btn flash-slide hover:scale-105 cursor-pointer transition-transform duration-500 flash-slide--green rounded-full"
             >
               Order Online
             </button>
